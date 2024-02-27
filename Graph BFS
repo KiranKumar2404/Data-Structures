@@ -1,0 +1,61 @@
+import java.util.*;
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Main g = new Main();
+        LinkedList <Integer> adj[] = new LinkedList [n];
+        for(int i=0;i<n;i++)
+        {
+            adj[i] = new LinkedList<>();
+        }
+            int a,b;
+            
+        while(true)
+        {
+            a = sc.nextInt();
+            b = sc.nextInt();
+                
+            if(a==-1 || b==-1)
+            {
+                break;
+            }
+            adj[a].add(b);
+        }
+            if(n==0)
+            {
+                System.out.println("Graph doesn't Exist");
+            }
+            else
+            {
+                System.out.print("BFS : ");
+                g.BFS(0,adj,n);
+            }
+    }
+    
+    void BFS(int s, LinkedList adj[], int v)
+    {
+        boolean visited[] = new boolean[v];
+        LinkedList <Integer> q = new LinkedList<>();
+        visited[s] = true;
+        q.add(s);
+        while(!q.isEmpty())
+        {
+            s = q.poll();
+            System.out.print(s+" ");
+            Iterator <Integer> i = adj[s].listIterator();
+            
+        while(i.hasNext())
+        {
+            int n = i.next();
+            if(!visited[n])
+            {
+                visited[n] = true;
+                q.add(n);
+            }
+        }
+    }
+  }
+}
