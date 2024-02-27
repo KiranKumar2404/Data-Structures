@@ -1,0 +1,60 @@
+import java.util.*;
+class node
+{
+    int data;
+    node left;
+    node right;
+    node(int data)
+    {
+        this.data = data;
+    }
+}
+
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        String str[] = sc.nextLine().split(" ");
+        int arr[] = new int[str.length];
+        for(int i=0;i<str.length;i++)
+        {
+            arr[i] = Integer.valueOf(str[i]);
+        }
+        
+        node nn = new node(arr[0]);
+        node head=nn;
+        Queue <node> q = new LinkedList<>();
+        q.add(nn);
+        int i=1;
+        
+        while(!q.isEmpty())
+        {
+            node t = q.poll();
+            int data = arr[i++];
+            if(data != -1)
+            {
+                nn = new node(data);
+                t.left = nn;
+                q.add(nn);
+            }
+            
+            data = arr[i++];
+            if(data != -1)
+            {
+                nn = new node(data);
+                t.right = nn;
+                q.add(nn);
+            }
+        }
+        display(head);
+    }
+    static void display(node t)
+    {
+        if(t==null)
+            return;
+        display(t.left);
+        System.out.print(t.data+" ");
+        display(t.right);
+    }
+}
