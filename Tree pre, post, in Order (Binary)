@@ -1,0 +1,76 @@
+import java.util.*;
+class node
+{
+    int data;
+    node left;
+    node right;
+    node(int data)
+    {
+        this.data = data;
+    }
+}
+
+class Insert
+{
+    node ins(node root, int data)
+    {
+        if(root == null)
+        {
+            return new node(data);
+        }
+        if(root.data<data)
+        {
+            root.right = ins(root.right, data);
+        }
+        else
+        {
+            root.left = ins(root.left, data);
+        }
+        return root;
+    }
+    
+    void post(node root)     //postorder
+    {
+        if(root == null)
+            return;
+        post(root.left);
+        post(root.right);
+        System.out.print(root.data+" ");   
+    }
+    void in(node root)       //inorder
+    {
+        if(root == null)
+            return;
+        in(root.left);
+        System.out.print(root.data+" ");      
+        in(root.right);
+    }
+    void pre(node root)     //preorder
+    {
+        if(root == null)
+            return;
+        System.out.print(root.data+" ");   
+        pre(root.left);
+        pre(root.right);
+    }
+}
+
+class Main
+{
+    public static void main(String[] args)
+    {
+        Insert inn = new Insert();
+        Scanner sc = new Scanner(System.in);
+        node root = null;
+        while(sc.hasNextInt())
+        {
+            int data = sc.nextInt();
+            root=inn.ins(root, data);
+        }
+        inn.post(root);
+        System.out.println();
+        inn.pre(root);
+        System.out.println();
+        inn.in(root);
+    }
+}
