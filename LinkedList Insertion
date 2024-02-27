@@ -1,0 +1,61 @@
+import java.util.*;
+
+    class node
+    {
+        int data;
+        node next;
+        node(int data)
+        {
+            this.data = data;
+        }
+    }
+class InsertFirst
+{
+    node head;
+    node temp;
+    void ins(int data)
+    {
+        node newnode = new node(data);
+        if(head==null)
+        {
+            head = newnode;
+            temp = newnode;
+        }
+        else
+        {
+            temp.next = newnode;
+            temp = newnode;
+        }
+    }
+    public void display()
+    {
+        temp = head;
+        while(temp!=null)
+        {
+        System.out.println(temp.data);
+        temp = temp.next;
+        }
+    }
+}
+public class Main
+{
+    public static void main(String[] args)
+    {
+        // Scanner sc=new Scanner(System.in);
+        InsertFirst ifi=new InsertFirst();
+        Scanner sc=new Scanner(System.in);
+        while(true)
+        {
+            int data=sc.nextInt();
+            if(data!=-1)
+            {
+                ifi.ins(data);
+            }
+            else
+            {
+                break;
+            }
+        }
+        ifi.display();
+    }
+}
