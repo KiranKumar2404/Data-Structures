@@ -1,0 +1,65 @@
+import java.util.*;
+class node{
+    char data;
+    node next;
+    
+    node(char data){
+        this.data = data;
+    }
+} 
+
+class Insert
+{
+    node head;
+    node temp;
+    void ins(char data)
+    {
+        node newnode = new node(data);
+        if(head==null)
+        {
+            head = newnode;
+            temp = newnode;
+        }
+        else
+        {
+            temp.next = newnode;
+            temp = newnode;
+        }
+    }
+    
+    void display()
+    {
+        String str = "";
+        temp = head;
+        while(temp!=null)
+        {
+            str += temp.data;
+            temp = temp.next;
+        }
+
+        if (str.length() == 0) {
+            System.out.println("List is empty");
+        } 
+        else {
+            int a = Integer.valueOf(str);
+            System.out.print(a+1);
+        }
+    }
+}
+
+class Main
+{
+    public static void main(String[] args)
+    {
+        Insert in = new Insert();
+        Scanner sc = new Scanner(System.in);
+        String str = "";
+        
+        while(sc.hasNext())
+        {
+            char data = sc.next().charAt(0);
+            in.ins(data);
+        }
+        in.display();
+    }
+}
