@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str[] = sc.nextLine().split("");
+        String str1[] = sc.nextLine().split("");
+        LinkedList <String> L = new LinkedList<>();
+        LinkedList <String> S = new LinkedList<>();
+        
+        boolean visited[] = new boolean[str.length];
+        
+        for(int i=0;i<str1.length;i++)
+        {
+            for(int j=0;j<str.length;j++)
+            {
+                if(str1[i].equals(str[j]))
+                {
+                    visited[j] = true;
+                }
+            }
+        }
+        
+        for(int i=0;i<str.length;i++)
+        {
+            if(visited[i]==false)
+            {
+                System.out.print(str[i]);
+            }
+        }
+    }
+}
